@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "mocha ./test/* --exit",
+    "test": "mocha ./test/* --exit"
   },
   "dependencies": {
     "cors": "^2.8.5",
