@@ -8,7 +8,7 @@ export const getAllTasks = async (req, res) => {
     query = `${query} ORDER BY ${req.query.orderBy} ${req.query && req.query.order ? req.query.order : order}`
   }
 
-  if (req.query && req.query.hideDone) {
+  if (req.query && req.query.hideDone && req.query.hideDone === "true") {
     query = `${query} WHERE done = 0`
   }
 
