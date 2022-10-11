@@ -29,7 +29,7 @@ export const updateTask = async (req, res) => {
 }
 
 export const updateDoneTask = async (req, res) => {
-  db.query("UPDATE tasks SET done = ?, WHERE id = ?", [req.body.done, req.params.id], function (err, result) {
+  db.query("UPDATE tasks SET done = ? WHERE id = ?", [req.body.done, req.params.id], function (err, result) {
     if (err) throw err;
     res.json(result);
   });
