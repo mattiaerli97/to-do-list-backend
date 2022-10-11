@@ -1,7 +1,16 @@
 import db from '../config.js'
 
 export const getAllTasks = async (req, res) => {
-  db.query("SELECT * FROM tasks", function (err, result) {
+  let query = "SELECT * FROM tasks"
+  let order = "ASC"
+
+  if (req.query && req.query.orderBy) {
+    query = `${query} ORDER BY ${req.query.orderBy}`
+  }
+
+  query = `${query} ${req.query && req.query.order ? req.query.order : order}`
+
+  db.query(query, function (err, result) {
     if (err) throw err;
     res.json(result);
   });
