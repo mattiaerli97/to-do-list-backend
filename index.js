@@ -3,7 +3,7 @@ import db from "./config.js";
 import taskRoutes from "./routes.js";
 import cors from "cors";
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 const app = express();
 
 /* try {
