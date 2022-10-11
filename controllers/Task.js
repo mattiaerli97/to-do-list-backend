@@ -8,6 +8,12 @@ export const getAllTasks = async (req, res) => {
     query = `${query} ORDER BY ${req.query.orderBy} ${req.query && req.query.order ? req.query.order : order}`
   }
 
+  if (req.query && req.query.hideDone) {
+    query = `${query} WHERE done = 0`
+  }
+
+  console.log(query)
+
   db.query(query, function (err, result) {
     if (err) throw err;
     res.json(result);
