@@ -12,8 +12,6 @@ export const getAllTasks = async (req, res) => {
     query = `${query} WHERE done = 0`
   }
 
-  console.log(query)
-
   db.query(query, function (err, result) {
     if (err) throw err;
     res.json(result);
@@ -23,7 +21,7 @@ export const getAllTasks = async (req, res) => {
 export const getTaskById = async (req, res) => {
   db.query("SELECT * FROM tasks WHERE id = ?", [req.params.id], function (err, result) {
     if (err) throw err;
-    res.json(result);
+    res.json(result.length > 0 ? result[0] : result);
   });
 }
 
