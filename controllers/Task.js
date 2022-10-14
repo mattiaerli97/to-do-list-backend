@@ -4,12 +4,12 @@ export const getAllTasks = async (req, res) => {
   let query = "SELECT * FROM tasks"
   let order = "ASC"
 
-  if (req.query && req.query.orderBy) {
-    query = `${query} ORDER BY ${req.query.orderBy} ${req.query && req.query.order ? req.query.order : order}`
-  }
-
   if (req.query && req.query.hideDone && req.query.hideDone === "true") {
     query = `${query} WHERE done = 0`
+  }
+
+  if (req.query && req.query.orderBy) {
+    query = `${query} ORDER BY ${req.query.orderBy} ${req.query && req.query.order ? req.query.order : order}`
   }
 
   db.query(query, function (err, result) {
